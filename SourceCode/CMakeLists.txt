@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 set (CMAKE_C_FLAGS "-Wall -g")
 
-file(GLOB SourceFiles *.cpp *.h)
+file(GLOB SourceFiles main.cpp *.h)
 
 add_executable (CodeToTest ${SourceFiles})
 
@@ -10,6 +10,17 @@ add_executable (CodeToTest ${SourceFiles})
 ###############################################################
 
 # start of initial unit test setup. a useful souce: https://cmake.org/cmake/help/v3.0/module/FindGTest.html
+# need to define: GTEST_LIBRARY GTEST_INCLUDE_DIR GTEST_MAIN_LIBRARY
+
+set(GTEST_INCLUDE_DIR "../gtest_prebuilt_1_8_0/include")
+
+if (WIN32)
+	set(GTEST_LIBRARY "../gtest_prebuilt_1_8_0/lib_win32/gtest.lib")
+	set(GTEST_MAIN_LIBRARY "../gtest_prebuilt_1_8_0/lib_win32/gtest_main.lib")
+# add OSX & / or Linux pre-built when the windows version is working
+
+endif()
+
 
 enable_testing()
 find_package(GTest REQUIRED)
