@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 2.8)
 set (CMAKE_C_FLAGS "-Wall -g")
 
+# this is to be based off all lines from https://github.com/snikulov/google-test-examples/blob/master/CMakeLists.txt
+# after line 32
+
 file(GLOB TestingSourceFile *.cpp *.h)
 
 add_executable (TestingCode ${TestingSourceFile})
