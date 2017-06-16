@@ -29,6 +29,8 @@ set(EXT_PROJECTS_DIR ${PROJECT_SOURCE_DIR}/ext)
 #file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 #add_library(${PROJECT_LIB_NAME} ${SRC_FILES})
 
+add_subdirectory(CodeToTest)
+
 add_subdirectory(${EXT_PROJECTS_DIR}/gtest)
 
 #-------------------
