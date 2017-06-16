@@ -1,13 +1,13 @@
-# Following taken from: https://github.com/snikulov/google-test-examples/blob/master/ext/gtest/CMakeLists.txt
-cmake_minimum_required(VERSION 2.8)
-
+cmake_minimum_required(VERSION 2.8.8)
 project(gtest_builder C CXX)
 include(ExternalProject)
 
 set(GTEST_FORCE_SHARED_CRT ON)
 set(GTEST_DISABLE_PTHREADS OFF)
 
-
+if(MINGW)
+    set(GTEST_DISABLE_PTHREADS ON)
+endif()
 
 ExternalProject_Add(googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
@@ -21,7 +21,7 @@ ExternalProject_Add(googletest
     # Disable install step
     INSTALL_COMMAND ""
     )
-	
+
 # Specify include dir
 ExternalProject_Get_Property(googletest source_dir)
 set(GTEST_INCLUDE_DIRS ${source_dir}/googletest/include PARENT_SCOPE)
@@ -29,3 +29,6 @@ set(GTEST_INCLUDE_DIRS ${source_dir}/googletest/include PARENT_SCOPE)
 # Specify MainTest's link libraries
 ExternalProject_Get_Property(googletest binary_dir)
 set(GTEST_LIBS_DIR ${binary_dir}/googlemock/gtest PARENT_SCOPE)
+
+
+

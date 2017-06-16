@@ -9,6 +9,6 @@ CTestTestfile.cmake
 .exe
 .app
 
-Build/
+build/
 
 
